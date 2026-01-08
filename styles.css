@@ -167,6 +167,8 @@ header.scrolled {
     color: var(--text-muted);
     max-width: 700px;
     margin-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn {
