@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheets | DBA Learning Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            padding: calc(var(--header-height) + 3rem) 0 3rem;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="DBA Learning Hub Logo">
+                <span class="text-gradient">DBA Learning Hub</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="articles.html">Articles</a>
+                <a href="scripts.html">Scripts</a>
+                <a href="cheatsheets.html" class="active">Cheat Sheets</a>
+                <a href="about.html">About</a>
+                <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
+                    class="youtube-link"><i class="fab fa-youtube"></i></a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Cheat Sheets</h1>
+            <p>Quick reference guides for commands, syntax, and architecture.</p>
+        </div>
+    </div>
+
+    <!-- Cheat Sheets Grid -->
+    <div class="container" style="padding-bottom: 4rem;">
+        <div class="grid-3">
+
+            <div class="card glass">
+                <div class="card-icon"><i class="fas fa-database"></i></div>
+                <h3>Oracle 19c Commands</h3>
+                <p>Common SRVCTL, CRSCTL, and SQLPlus commands.</p>
+                <a href="#" class="btn-secondary" style="margin-top: 1rem; display:inline-block;">Download PDF</a>
+            </div>
+
+            <div class="card glass">
+                <div class="card-icon"><i class="fas fa-server"></i></div>
+                <h3>SQL Server DMVs</h3>
+                <p>Essential Dynamic Management Views for performance tuning.</p>
+                <a href="#" class="btn-secondary" style="margin-top: 1rem; display:inline-block;">Download PDF</a>
+            </div>
+
+            <div class="card glass">
+                <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                <h3>Linux for DBAs</h3>
+                <p>Top 50 Linux commands every DBA should know.</p>
+                <a href="#" class="btn-secondary" style="margin-top: 1rem; display:inline-block;">Download PDF</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DBA Learning Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

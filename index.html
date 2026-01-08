@@ -22,10 +22,10 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html" class="active">Home</a>
-                <a href="#">Articles</a>
-                <a href="#">Scripts</a>
-                <a href="#">Cheat Sheets</a>
-                <a href="#">About</a>
+                <a href="articles.html">Articles</a>
+                <a href="scripts.html">Scripts</a>
+                <a href="cheatsheets.html">Cheat Sheets</a>
+                <a href="about.html">About</a>
                 <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
                     class="youtube-link"><i class="fab fa-youtube"></i></a>
             </nav>
@@ -51,46 +51,87 @@
             <h2 class="section-title">Explore Topics</h2>
             <div class="grid">
                 <!-- Oracle Card -->
-                <div class="card glass">
-                    <div class="card-icon"><i class="fas fa-database"></i></div>
-                    <h3>Oracle DBA</h3>
-                    <p>Installation, RMAN, Data Guard, RAC, and performance tuning guides for all versions.</p>
-                </div>
+                <a href="category_oracle.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-database"></i></div>
+                        <h3>Oracle DBA</h3>
+                        <p>Installation, RMAN, Data Guard, RAC, and performance tuning guides for all versions.</p>
+                    </div>
+                </a>
 
                 <!-- SQL Server Card -->
-                <div class="card glass">
-                    <div class="card-icon"><i class="fas fa-server"></i></div>
-                    <h3>SQL Server</h3>
-                    <p>Administration, T-SQL, backup strategies, and high availability solutions.</p>
-                </div>
+                <a href="category_sqlserver.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-server"></i></div>
+                        <h3>SQL Server</h3>
+                        <p>Administration, T-SQL, backup strategies, and high availability solutions.</p>
+                    </div>
+                </a>
 
-                <!-- Open Source Card -->
-                <div class="card glass">
-                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
-                    <h3>Open Source</h3>
-                    <p>Master MySQL, PostgreSQL, and MariaDB. Replication, clustering, and more.</p>
-                </div>
+                <!-- MySQL Card -->
+                <a href="category_mysql.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-database" style="color: #00758f;"></i></div>
+                        <h3>MySQL</h3>
+                        <p>Replication, clustering, and performance optimization for the world's most popular open
+                            source
+                            DB.</p>
+                    </div>
+                </a>
+
+                <!-- PostgreSQL Card -->
+                <a href="category_postgresql.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-server" style="color: #336791;"></i></div>
+                        <h3>PostgreSQL</h3>
+                        <p>Advanced SQL features, JSONB, indexing strategies, and high availability setup.</p>
+                    </div>
+                </a>
+
+                <!-- MariaDB Card -->
+                <a href="category_mariadb.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-database" style="color: #c0765a;"></i></div>
+                        <h3>MariaDB</h3>
+                        <p>Galera Cluster, storage engines, and key differences from MySQL.</p>
+                    </div>
+                </a>
+
+                <!-- MongoDB Card -->
+                <a href="category_mongodb.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fab fa-envira" style="color: #47A248;"></i></div>
+                        <h3>MongoDB</h3>
+                        <p>NoSQL document store design, sharding, and replica set configuration.</p>
+                    </div>
+                </a>
 
                 <!-- OS & Scripting Card -->
-                <div class="card glass">
-                    <div class="card-icon"><i class="fas fa-terminal"></i></div>
-                    <h3>OS & Scripting</h3>
-                    <p>Linux administration, Shell scripting, and automation tools for DBAs.</p>
-                </div>
+                <a href="category_os.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                        <h3>OS & Scripting</h3>
+                        <p>Linux administration, Shell scripting, and automation tools for DBAs.</p>
+                    </div>
+                </a>
 
                 <!-- Cloud DB Card -->
-                <div class="card glass">
-                    <div class="card-icon"><i class="fas fa-cloud"></i></div>
-                    <h3>Cloud Databases</h3>
-                    <p>AWS RDS, Azure SQL, and Oracle Cloud Infrastructure (OCI) deep dives.</p>
-                </div>
+                <a href="category_cloud.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Cloud Databases</h3>
+                        <p>AWS RDS, Azure SQL, and Oracle Cloud Infrastructure (OCI) deep dives.</p>
+                    </div>
+                </a>
 
                 <!-- Monitoring Card -->
-                <div class="card glass">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Monitoring</h3>
-                    <p>Tools and techniques to keep your database healthy and performant.</p>
-                </div>
+                <a href="category_monitoring.html" class="card-link">
+                    <div class="card glass">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Monitoring</h3>
+                        <p>Tools and techniques to keep your database healthy and performant.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -104,7 +145,7 @@
                     <!-- Article Item 1 -->
                     <div class="article-item">
                         <div class="article-content">
-                            <h4><a href="article.html">Install Oracle 19c on Linux 7</a></h4>
+                            <h4><a href="article_oracle_install.html">Install Oracle 19c on Linux 7</a></h4>
                             <div class="article-meta">
                                 <span><i class="far fa-calendar"></i> Jan 08, 2026</span>
                                 <span><i class="far fa-folder"></i> Oracle</span>
@@ -116,10 +157,10 @@
                     <!-- Article Item 2 -->
                     <div class="article-item">
                         <div class="article-content">
-                            <h4><a href="#">RMAN Database Restore from ASM to File System</a></h4>
+                            <h4><a href="article_sql_backup.html">SQL Server Backup & Restore Strategies</a></h4>
                             <div class="article-meta">
                                 <span><i class="far fa-calendar"></i> Jan 05, 2026</span>
-                                <span><i class="far fa-folder"></i> RMAN</span>
+                                <span><i class="far fa-folder"></i> SQL Server</span>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
@@ -128,10 +169,10 @@
                     <!-- Article Item 3 -->
                     <div class="article-item">
                         <div class="article-content">
-                            <h4><a href="#">Configure Data Guard Broker in 12c</a></h4>
+                            <h4><a href="article_mysql_setup.html">MySQL Master-Slave Replication Setup</a></h4>
                             <div class="article-meta">
                                 <span><i class="far fa-calendar"></i> Dec 28, 2025</span>
-                                <span><i class="far fa-folder"></i> Data Guard</span>
+                                <span><i class="far fa-folder"></i> MySQL</span>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
@@ -140,7 +181,7 @@
                     <!-- Article Item 4 -->
                     <div class="article-item">
                         <div class="article-content">
-                            <h4><a href="#">Upgrade Oracle Database from 12.2 to 19c</a></h4>
+                            <h4><a href="articles.html">Upgrade Oracle Database from 12.2 to 19c</a></h4>
                             <div class="article-meta">
                                 <span><i class="far fa-calendar"></i> Dec 20, 2025</span>
                                 <span><i class="far fa-folder"></i> Upgrades</span>

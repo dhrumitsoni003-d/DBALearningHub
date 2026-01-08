@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | DBA Learning Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            padding: calc(var(--header-height) + 3rem) 0 3rem;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="DBA Learning Hub Logo">
+                <span class="text-gradient">DBA Learning Hub</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="articles.html">Articles</a>
+                <a href="scripts.html">Scripts</a>
+                <a href="cheatsheets.html">Cheat Sheets</a>
+                <a href="about.html" class="active">About</a>
+                <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
+                    class="youtube-link"><i class="fab fa-youtube"></i></a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>About DBA Learning Hub</h1>
+        </div>
+    </div>
+
+    <!-- About Content -->
+    <div class="container" style="padding-bottom: 4rem;">
+        <div class="about-content glass">
+            <p>Welcome to <strong>DBA Learning Hub</strong>, your premier destination for mastering database
+                administration.</p>
+
+            <p>Founded by passionate database experts, our mission is to simplify complex concepts and provide
+                practical, real-world solutions for DBAs working with Oracle, SQL Server, MySQL, PostgreSQL, and Cloud
+                Databases.</p>
+
+            <p>Whether you are a beginner looking to install your first database or a seasoned architect designing
+                high-availability clusters, we have resources to support your journey.</p>
+
+            <h3>Connect with Us</h3>
+            <p>Have questions or want to request a topic? Check out our YouTube channel or reach out via email.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DBA Learning Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

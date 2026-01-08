@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Articles | DBA Learning Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            padding: calc(var(--header-height) + 3rem) 0 3rem;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="DBA Learning Hub Logo">
+                <span class="text-gradient">DBA Learning Hub</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="articles.html" class="active">Articles</a>
+                <a href="scripts.html">Scripts</a>
+                <a href="cheatsheets.html">Cheat Sheets</a>
+                <a href="about.html">About</a>
+                <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
+                    class="youtube-link"><i class="fab fa-youtube"></i></a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Knowledge Base</h1>
+            <p>Explore our complete collection of tutorials, guides, and technical deep-dives.</p>
+        </div>
+    </div>
+
+    <!-- Articles List -->
+    <div class="container" style="padding-bottom: 4rem;">
+        <div class="article-grid-list" style="display: grid; gap: 1.5rem;">
+
+            <!-- Oracle Article -->
+            <a href="article_oracle_install.html" class="card-link">
+                <div class="article-item glass">
+                    <div class="article-content">
+                        <h4>Install Oracle 19c on Linux 7</h4>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> Jan 08, 2026</span>
+                            <span><i class="far fa-folder"></i> Oracle</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                </div>
+            </a>
+
+            <!-- SQL Server Article -->
+            <a href="article_sql_backup.html" class="card-link">
+                <div class="article-item glass">
+                    <div class="article-content">
+                        <h4>SQL Server Backup & Restore Strategies</h4>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> Jan 09, 2026</span>
+                            <span><i class="far fa-folder"></i> SQL Server</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                </div>
+            </a>
+
+            <!-- MySQL Article -->
+            <a href="article_mysql_setup.html" class="card-link">
+                <div class="article-item glass">
+                    <div class="article-content">
+                        <h4>MySQL Master-Slave Replication Setup</h4>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> Jan 09, 2026</span>
+                            <span><i class="far fa-folder"></i> MySQL</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DBA Learning Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
