@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Oracle 19c on Linux 7 | DBA Learning Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Article Specific Styles */
+        .article-page {
+            padding-top: calc(var(--header-height) + 2rem);
+            min-height: 100vh;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, rgba(0, 123, 255, 0.1), transparent);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .content {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+
+        .content h2 {
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .content pre {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .content code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #38bdf8;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+        }
+
+        .sidebar-widget {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-links a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .sidebar-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        @media (max-width: 900px) {
+            .article-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="DBA Learning Hub Logo">
+                <span class="text-gradient">DBA Learning Hub</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="active">Articles</a>
+                <a href="#">Scripts</a>
+                <a href="#">Cheat Sheets</a>
+                <a href="#">About</a>
+                <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
+                    class="youtube-link"><i class="fab fa-youtube"></i></a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Wrapper -->
+    <div class="article-page">
+        <!-- Article Header -->
+        <div class="article-header">
+            <div class="container">
+                <h1>Install Oracle 19c on Linux 7</h1>
+                <div class="meta-info">
+                    <span><i class="far fa-user"></i> Admin</span>
+                    <span><i class="far fa-calendar"></i> Jan 08, 2026</span>
+                    <span><i class="far fa-folder"></i> Oracle Database</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container article-layout">
+            <!-- Main Content -->
+            <article class="content">
+                <p>Welcome to this comprehensive guide on installing Oracle Database 19c on Oracle Linux 7. In this
+                    tutorial, we will cover the prerequisites, software installation, and database creation using DBCA.
+                </p>
+
+                <h2>1. Prerequisites</h2>
+                <p>Before starting the installation, ensure your system meets the following requirements:</p>
+                <ul>
+                    <li>At least 8GB of RAM</li>
+                    <li>minimum 50GB of swap space (recommended)</li>
+                    <li>Update the system using yum update</li>
+                </ul>
+                <br>
+                <p>Run the following command to install the preinstall package:</p>
+                <pre><code>yum install -y oracle-database-preinstall-19c</code></pre>
+
+                <h2>2. Creating Directories</h2>
+                <p>Create the necessary directories for Oracle software ownership:</p>
+                <pre><code>mkdir -p /u01/app/oracle/product/19.0.0/dbhome_1
+chown -R oracle:oinstall /u01
+chmod -R 775 /u01</code></pre>
+
+                <h2>3. Unzipping the Software</h2>
+                <p>Login as the <strong>oracle</strong> user and unzip the downloaded file directly into the Oracle Home
+                    directory:</p>
+                <pre><code>su - oracle
+cd /u01/app/oracle/product/19.0.0/dbhome_1
+unzip -q p29517242_190000_Linux-x86-64.zip</code></pre>
+
+                <h2>4. Launching the Installer</h2>
+                <p>Once unzipped, run the installer to start the graphical wizard:</p>
+                <pre><code>./runInstaller</code></pre>
+
+                <div class="alert"
+                    style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0;">
+                    <strong>Note:</strong> Ensure you have X11 forwarding enabled if you are running this from a remote
+                    SSH session.
+                </div>
+
+                <h2>Summary</h2>
+                <p>This concludes the basic setup. In the next part, we will discuss creating a container database (CDB)
+                    and pluggable databases (PDB).</p>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Table of Contents</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#">1. Prerequisites</a></li>
+                        <li><a href="#">2. Creating Directories</a></li>
+                        <li><a href="#">3. Unzipping Software</a></li>
+                        <li><a href="#">4. Launching Installer</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Related Articles</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#">Oracle 19c New Features</a></li>
+                        <li><a href="#">RMAN Backup Strategies</a></li>
+                        <li><a href="#">Data Guard Step-by-Step</a></li>
+                        <li><a href="#">Performance Tuning Basics</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DBA Learning Hub. Inspired by br8dba.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

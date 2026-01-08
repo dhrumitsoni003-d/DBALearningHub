@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBA Learning Hub | Master Database Administration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="DBA Learning Hub Logo">
+                <span class="text-gradient">DBA Learning Hub</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="#">Articles</a>
+                <a href="#">Scripts</a>
+                <a href="#">Cheat Sheets</a>
+                <a href="#">About</a>
+                <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
+                    class="youtube-link"><i class="fab fa-youtube"></i></a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Expert <span class="text-gradient">Database Administration</span><br>Tips & Techniques</h1>
+            <p>Your ultimate resource for Oracle, SQL Server, MySQL, and PostgreSQL. Master the art of database
+                management with premium guides and scripts.</p>
+            <a href="#categories" class="btn btn-primary">Start Learning</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Explore Topics</h2>
+            <div class="grid">
+                <!-- Oracle Card -->
+                <div class="card glass">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <h3>Oracle DBA</h3>
+                    <p>Installation, RMAN, Data Guard, RAC, and performance tuning guides for all versions.</p>
+                </div>
+
+                <!-- SQL Server Card -->
+                <div class="card glass">
+                    <div class="card-icon"><i class="fas fa-server"></i></div>
+                    <h3>SQL Server</h3>
+                    <p>Administration, T-SQL, backup strategies, and high availability solutions.</p>
+                </div>
+
+                <!-- Open Source Card -->
+                <div class="card glass">
+                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Open Source</h3>
+                    <p>Master MySQL, PostgreSQL, and MariaDB. Replication, clustering, and more.</p>
+                </div>
+
+                <!-- OS & Scripting Card -->
+                <div class="card glass">
+                    <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                    <h3>OS & Scripting</h3>
+                    <p>Linux administration, Shell scripting, and automation tools for DBAs.</p>
+                </div>
+
+                <!-- Cloud DB Card -->
+                <div class="card glass">
+                    <div class="card-icon"><i class="fas fa-cloud"></i></div>
+                    <h3>Cloud Databases</h3>
+                    <p>AWS RDS, Azure SQL, and Oracle Cloud Infrastructure (OCI) deep dives.</p>
+                </div>
+
+                <!-- Monitoring Card -->
+                <div class="card glass">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Monitoring</h3>
+                    <p>Tools and techniques to keep your database healthy and performant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Updates Section -->
+    <section class="latest-articles">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="glass" style="border-radius: 16px; padding: 1rem;">
+                <div class="article-list">
+                    <!-- Article Item 1 -->
+                    <div class="article-item">
+                        <div class="article-content">
+                            <h4><a href="article.html">Install Oracle 19c on Linux 7</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> Jan 08, 2026</span>
+                                <span><i class="far fa-folder"></i> Oracle</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                    </div>
+
+                    <!-- Article Item 2 -->
+                    <div class="article-item">
+                        <div class="article-content">
+                            <h4><a href="#">RMAN Database Restore from ASM to File System</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> Jan 05, 2026</span>
+                                <span><i class="far fa-folder"></i> RMAN</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                    </div>
+
+                    <!-- Article Item 3 -->
+                    <div class="article-item">
+                        <div class="article-content">
+                            <h4><a href="#">Configure Data Guard Broker in 12c</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> Dec 28, 2025</span>
+                                <span><i class="far fa-folder"></i> Data Guard</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                    </div>
+
+                    <!-- Article Item 4 -->
+                    <div class="article-item">
+                        <div class="article-content">
+                            <h4><a href="#">Upgrade Oracle Database from 12.2 to 19c</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> Dec 20, 2025</span>
+                                <span><i class="far fa-folder"></i> Upgrades</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--secondary-color);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Channel Section -->
+    <section class="youtube-section glass">
+        <div class="container" style="text-align: center; padding: 4rem 0;">
+            <i class="fab fa-youtube" style="font-size: 4rem; color: #ff0000; margin-bottom: 1rem;"></i>
+            <h2 class="section-title">Watch & Learn</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-muted); font-size: 1.2rem;">Check out my YouTube channel
+                for in-depth tutorials and demos.</p>
+            <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank" class="btn btn-primary"
+                style="background: #ff0000; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);">
+                Visit Channel <i class="fas fa-external-link-alt" style="margin-left: 8px;"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DBA Learning Hub. Inspired by br8dba.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
