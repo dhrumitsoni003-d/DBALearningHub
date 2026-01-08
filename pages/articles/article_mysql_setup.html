@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Server Backup & Restore Strategies | DBA Learning Hub</title>
+    <title>MySQL Master-Slave Replication Setup | DBA Learning Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Article Specific Styles used in template */
@@ -128,16 +128,16 @@
     <!-- Header -->
     <header class="glass">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="DBA Learning Hub Logo">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/images/logo.png" alt="DBA Learning Hub Logo">
                 <span class="text-gradient">DBA Learning Hub</span>
             </a>
             <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="articles.html" class="active">Articles</a>
-                <a href="scripts.html">Scripts</a>
-                <a href="cheatsheets.html">Cheat Sheets</a>
-                <a href="about.html">About</a>
+                <a href="../../index.html">Home</a>
+                <a href="../articles.html" class="active">Articles</a>
+                <a href="../scripts.html">Scripts</a>
+                <a href="../cheatsheets.html">Cheat Sheets</a>
+                <a href="../about.html">About</a>
                 <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
                     class="youtube-link"><i class="fab fa-youtube"></i></a>
             </nav>
@@ -152,11 +152,11 @@
         <!-- Article Header -->
         <div class="article-header">
             <div class="container">
-                <h1>SQL Server Backup & Restore Strategies</h1>
+                <h1>MySQL 8.0 Master-Slave Replication Setup</h1>
                 <div class="meta-info">
                     <span><i class="far fa-user"></i> Admin</span>
                     <span><i class="far fa-calendar"></i> Jan 09, 2026</span>
-                    <span><i class="far fa-folder"></i> SQL Server</span>
+                    <span><i class="far fa-folder"></i> MySQL</span>
                 </div>
             </div>
         </div>
@@ -164,45 +164,55 @@
         <div class="container article-layout">
             <!-- Main Content -->
             <article class="content">
-                <p>Ensuring data recovery is the most critical task for any SQL Server DBA. This guide covers the
-                    essential T-SQL commands for performing full, differential, and transaction log backups.</p>
+                <p>Replication enables data from one MySQL database server (the master) to be copied to one or more
+                    other database servers (the slaves). This tutorial guides you through setting up binary log
+                    replication.</p>
 
-                <h2>1. Full Database Backup</h2>
-                <p>A full backup contains all the data in a specific database or set of filegroups or files, and also
-                    enough log to allow for recovering that data.</p>
-                <pre><code>BACKUP DATABASE [SalesDB]
-TO DISK = 'C:\Backups\SalesDB_Full.bak'
-WITH FORMAT,
-MEDIANAME = 'SalesDB_Backup',
-NAME = 'Full Backup of SalesDB';
-GO</code></pre>
+                <h2>1. Configure the Master</h2>
+                <p>Edit the <code>my.cnf</code> file on the Master server to enable binary logging and set a unique
+                    server ID.</p>
+                <pre><code>[mysqld]
+server-id = 1
+log_bin = /var/log/mysql/mysql-bin.log
+binlog_do_db = mydb</code></pre>
+                <p>Restart the MySQL service to apply changes.</p>
 
-                <h2>2. Transaction Log Backup</h2>
-                <p>Log backups allow you to restore the database to a specific point in time. They are only available in
-                    Full or Bulk-Logged recovery models.</p>
-                <pre><code>BACKUP LOG [SalesDB]
-TO DISK = 'C:\Backups\SalesDB_Log.trn'
-WITH NOINIT,
-NAME = 'SalesDB Log Backup';
-GO</code></pre>
+                <h2>2. Create Replication User</h2>
+                <p>Log in to the Master and create a user that the slave will use to connect.</p>
+                <pre><code>CREATE USER 'replica_user'@'%' IDENTIFIED BY 'password';
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+FLUSH PRIVILEGES;</code></pre>
 
-                <h2>3. Restoring a Database</h2>
-                <p>When restoring, always start with the Full backup. Use <code>WITH NORECOVERY</code> if you plan to
-                    apply log backups afterwards.</p>
-                <pre><code>-- Restore Full Backup
-RESTORE DATABASE [SalesDB]
-FROM DISK = 'C:\Backups\SalesDB_Full.bak'
-WITH NORECOVERY;
+                <h2>3. Obtain Master Coordinates</h2>
+                <p>Lock the tables to get a consistent snapshot position.</p>
+                <pre><code>FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;</code></pre>
+                <div class="alert"
+                    style="background: rgba(0, 212, 255, 0.1); border-left: 4px solid #00d4ff; padding: 1rem; margin: 1rem 0;">
+                    <strong>Tip:</strong> Note down the <code>File</code> and <code>Position</code> values. You will
+                    need them for the slave configuration.
+                </div>
 
--- Restore Log Backup
-RESTORE LOG [SalesDB]
-FROM DISK = 'C:\Backups\SalesDB_Log.trn'
-WITH RECOVERY;
-GO</code></pre>
+                <h2>4. Configure the Slave</h2>
+                <p>On the Slave server, edit <code>my.cnf</code> and set a unique ID (different from Master).</p>
+                <pre><code>[mysqld]
+server-id = 2</code></pre>
+
+                <h2>5. Start Replication</h2>
+                <p>On the Slave, configure the master connection details.</p>
+                <pre><code>CHANGE MASTER TO
+MASTER_HOST='192.168.1.10',
+MASTER_USER='replica_user',
+MASTER_PASSWORD='password',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=107;
+
+START SLAVE;
+SHOW SLAVE STATUS\G;</code></pre>
 
                 <h2>Summary</h2>
-                <p>Always verify your backups with <code>RESTORE VERIFYONLY</code> to ensure they are valid and usable
-                    when disaster strikes.</p>
+                <p>If <code>Slave_IO_Running</code> and <code>Slave_SQL_Running</code> are both "Yes", your replication
+                    is successfully established!</p>
             </article>
 
             <!-- Sidebar -->
@@ -210,18 +220,20 @@ GO</code></pre>
                 <div class="sidebar-widget">
                     <h3>Table of Contents</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">1. Full Database Backup</a></li>
-                        <li><a href="#">2. Transaction Log Backup</a></li>
-                        <li><a href="#">3. Restoring a Database</a></li>
+                        <li><a href="#">1. Configure Master</a></li>
+                        <li><a href="#">2. Create User</a></li>
+                        <li><a href="#">3. Master Coordinates</a></li>
+                        <li><a href="#">4. Configure Slave</a></li>
+                        <li><a href="#">5. Start Replication</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-widget">
                     <h3>Related Articles</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">SQL Agent Jobs Guide</a></li>
-                        <li><a href="#">Index Fragmentation</a></li>
-                        <li><a href="#">AlwaysOn Availability Groups</a></li>
+                        <li><a href="#">MySQL Backup with mysqldump</a></li>
+                        <li><a href="#">MySQL Group Replication</a></li>
+                        <li><a href="#">Performance Tuning InnoDB</a></li>
                     </ul>
                 </div>
             </aside>
@@ -234,7 +246,7 @@ GO</code></pre>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
 
 </html>

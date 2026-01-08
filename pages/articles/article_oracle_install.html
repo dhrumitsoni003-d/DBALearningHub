@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySQL Master-Slave Replication Setup | DBA Learning Hub</title>
+    <title>Install Oracle 19c on Linux 7 | DBA Learning Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Article Specific Styles used in template */
+        /* Article Specific Styles */
         .article-page {
             padding-top: calc(var(--header-height) + 2rem);
             min-height: 100vh;
@@ -77,6 +77,7 @@
             color: #38bdf8;
         }
 
+        /* Sidebar Styles */
         .sidebar {
             position: sticky;
             top: calc(var(--header-height) + 2rem);
@@ -128,16 +129,16 @@
     <!-- Header -->
     <header class="glass">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="DBA Learning Hub Logo">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/images/logo.png" alt="DBA Learning Hub Logo">
                 <span class="text-gradient">DBA Learning Hub</span>
             </a>
             <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="articles.html" class="active">Articles</a>
-                <a href="scripts.html">Scripts</a>
-                <a href="cheatsheets.html">Cheat Sheets</a>
-                <a href="about.html">About</a>
+                <a href="../../index.html">Home</a>
+                <a href="../articles.html" class="active">Articles</a>
+                <a href="../scripts.html">Scripts</a>
+                <a href="../cheatsheets.html">Cheat Sheets</a>
+                <a href="../about.html">About</a>
                 <a href="https://www.youtube.com/channel/UCZD6KXoFIaH9Za9IL6r63jA" target="_blank"
                     class="youtube-link"><i class="fab fa-youtube"></i></a>
             </nav>
@@ -152,11 +153,11 @@
         <!-- Article Header -->
         <div class="article-header">
             <div class="container">
-                <h1>MySQL 8.0 Master-Slave Replication Setup</h1>
+                <h1>Install Oracle 19c on Linux 7</h1>
                 <div class="meta-info">
                     <span><i class="far fa-user"></i> Admin</span>
-                    <span><i class="far fa-calendar"></i> Jan 09, 2026</span>
-                    <span><i class="far fa-folder"></i> MySQL</span>
+                    <span><i class="far fa-calendar"></i> Jan 08, 2026</span>
+                    <span><i class="far fa-folder"></i> Oracle Database</span>
                 </div>
             </div>
         </div>
@@ -164,55 +165,47 @@
         <div class="container article-layout">
             <!-- Main Content -->
             <article class="content">
-                <p>Replication enables data from one MySQL database server (the master) to be copied to one or more
-                    other database servers (the slaves). This tutorial guides you through setting up binary log
-                    replication.</p>
+                <p>Welcome to this comprehensive guide on installing Oracle Database 19c on Oracle Linux 7. In this
+                    tutorial, we will cover the prerequisites, software installation, and database creation using DBCA.
+                </p>
 
-                <h2>1. Configure the Master</h2>
-                <p>Edit the <code>my.cnf</code> file on the Master server to enable binary logging and set a unique
-                    server ID.</p>
-                <pre><code>[mysqld]
-server-id = 1
-log_bin = /var/log/mysql/mysql-bin.log
-binlog_do_db = mydb</code></pre>
-                <p>Restart the MySQL service to apply changes.</p>
+                <h2>1. Prerequisites</h2>
+                <p>Before starting the installation, ensure your system meets the following requirements:</p>
+                <ul>
+                    <li>At least 8GB of RAM</li>
+                    <li>minimum 50GB of swap space (recommended)</li>
+                    <li>Update the system using yum update</li>
+                </ul>
+                <br>
+                <p>Run the following command to install the preinstall package:</p>
+                <pre><code>yum install -y oracle-database-preinstall-19c</code></pre>
 
-                <h2>2. Create Replication User</h2>
-                <p>Log in to the Master and create a user that the slave will use to connect.</p>
-                <pre><code>CREATE USER 'replica_user'@'%' IDENTIFIED BY 'password';
-GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
-FLUSH PRIVILEGES;</code></pre>
+                <h2>2. Creating Directories</h2>
+                <p>Create the necessary directories for Oracle software ownership:</p>
+                <pre><code>mkdir -p /u01/app/oracle/product/19.0.0/dbhome_1
+chown -R oracle:oinstall /u01
+chmod -R 775 /u01</code></pre>
 
-                <h2>3. Obtain Master Coordinates</h2>
-                <p>Lock the tables to get a consistent snapshot position.</p>
-                <pre><code>FLUSH TABLES WITH READ LOCK;
-SHOW MASTER STATUS;</code></pre>
+                <h2>3. Unzipping the Software</h2>
+                <p>Login as the <strong>oracle</strong> user and unzip the downloaded file directly into the Oracle Home
+                    directory:</p>
+                <pre><code>su - oracle
+cd /u01/app/oracle/product/19.0.0/dbhome_1
+unzip -q p29517242_190000_Linux-x86-64.zip</code></pre>
+
+                <h2>4. Launching the Installer</h2>
+                <p>Once unzipped, run the installer to start the graphical wizard:</p>
+                <pre><code>./runInstaller</code></pre>
+
                 <div class="alert"
-                    style="background: rgba(0, 212, 255, 0.1); border-left: 4px solid #00d4ff; padding: 1rem; margin: 1rem 0;">
-                    <strong>Tip:</strong> Note down the <code>File</code> and <code>Position</code> values. You will
-                    need them for the slave configuration.
+                    style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0;">
+                    <strong>Note:</strong> Ensure you have X11 forwarding enabled if you are running this from a remote
+                    SSH session.
                 </div>
 
-                <h2>4. Configure the Slave</h2>
-                <p>On the Slave server, edit <code>my.cnf</code> and set a unique ID (different from Master).</p>
-                <pre><code>[mysqld]
-server-id = 2</code></pre>
-
-                <h2>5. Start Replication</h2>
-                <p>On the Slave, configure the master connection details.</p>
-                <pre><code>CHANGE MASTER TO
-MASTER_HOST='192.168.1.10',
-MASTER_USER='replica_user',
-MASTER_PASSWORD='password',
-MASTER_LOG_FILE='mysql-bin.000001',
-MASTER_LOG_POS=107;
-
-START SLAVE;
-SHOW SLAVE STATUS\G;</code></pre>
-
                 <h2>Summary</h2>
-                <p>If <code>Slave_IO_Running</code> and <code>Slave_SQL_Running</code> are both "Yes", your replication
-                    is successfully established!</p>
+                <p>This concludes the basic setup. In the next part, we will discuss creating a container database (CDB)
+                    and pluggable databases (PDB).</p>
             </article>
 
             <!-- Sidebar -->
@@ -220,20 +213,20 @@ SHOW SLAVE STATUS\G;</code></pre>
                 <div class="sidebar-widget">
                     <h3>Table of Contents</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">1. Configure Master</a></li>
-                        <li><a href="#">2. Create User</a></li>
-                        <li><a href="#">3. Master Coordinates</a></li>
-                        <li><a href="#">4. Configure Slave</a></li>
-                        <li><a href="#">5. Start Replication</a></li>
+                        <li><a href="#">1. Prerequisites</a></li>
+                        <li><a href="#">2. Creating Directories</a></li>
+                        <li><a href="#">3. Unzipping Software</a></li>
+                        <li><a href="#">4. Launching Installer</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-widget">
                     <h3>Related Articles</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">MySQL Backup with mysqldump</a></li>
-                        <li><a href="#">MySQL Group Replication</a></li>
-                        <li><a href="#">Performance Tuning InnoDB</a></li>
+                        <li><a href="#">Oracle 19c New Features</a></li>
+                        <li><a href="#">RMAN Backup Strategies</a></li>
+                        <li><a href="#">Data Guard Step-by-Step</a></li>
+                        <li><a href="#">Performance Tuning Basics</a></li>
                     </ul>
                 </div>
             </aside>
@@ -246,7 +239,7 @@ SHOW SLAVE STATUS\G;</code></pre>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
 
 </html>
